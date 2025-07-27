@@ -1,0 +1,8 @@
+def removeElement(self, nums: List[int], val: int) -> int:
+        remove = 0
+        for i in nums:
+            if i == val:
+                i = remove 
+                remove = remove + 1 
+
+        return remove
