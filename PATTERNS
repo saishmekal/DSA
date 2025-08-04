@@ -1,0 +1,20 @@
+# Two Pointers Pattern – Summary
+
+## 📘 Definition
+The **Two Pointers** technique uses two variables to efficiently traverse a data structure, often reducing time complexity from O(n²) to O(n).
+
+## 🧠 When to Use
+- Sorted arrays or lists
+- Pair/triplet searching
+- Removing duplicates
+- Cycle detection in linked lists
+
+## 📌 Pointer Variants
+| Type             | Description                            | Example           |
+|------------------|----------------------------------------|-------------------|
+| Opposite Ends     | Start from both ends                  | Two Sum (Sorted)  |
+| Same Direction    | Move from start together              | Remove Duplicates |
+| Different Speeds  | Fast & slow pointers                  | Detect Cycle      |
+
+## 🕒 Time Complexity
+Most two pointer solutions run in **O(n)** time.
