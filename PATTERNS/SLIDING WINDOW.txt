@@ -1,0 +1,41 @@
+# 🚪 Sliding Window Pattern – DSA
+
+## 📘 Definition:
+The **Sliding Window** pattern is a technique to efficiently solve problems that involve **contiguous subarrays or substrings**, by using a "window" that slides over the input structure without recomputing values from scratch.
+
+---
+
+## 🧠 When to Use:
+- Working with **subarrays or substrings**
+- Finding **maximum/minimum sum or length**
+- Solving **longest/shortest unique substring** problems
+- Problems that ask: "Find the best/valid range of size k"
+
+---
+
+## 📌 Types of Windows:
+
+| Type           | Description                                | Example Problems                  |
+|----------------|--------------------------------------------|-----------------------------------|
+| Fixed-size     | Window of constant size `k`                | Max sum of subarray of size k     |
+| Variable-size  | Expand/shrink window based on conditions   | Longest substring with k distinct |
+
+---
+
+## 🧩 Example 1: Max Sum of Subarray of Size K
+
+```python
+def max_subarray_sum(arr, k):
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+
+    for i in range(k, len(arr)):
+        window_sum += arr[i] - arr[i - k]
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum
+
+# Example
+arr = [2, 1, 5, 1, 3, 2]
+k = 3
+print(max_subarray_sum(arr, k))  # Output: 9
