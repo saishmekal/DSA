@@ -1,0 +1,38 @@
+# 🐢🐇 Fast & Slow Pointers Pattern – DSA
+
+## 📘 Definition:
+The **Fast and Slow Pointers Pattern** (also known as the **Tortoise and Hare Algorithm**) uses two pointers that move at different speeds through a data structure—commonly a linked list or array—to detect cycles or reach a specific node efficiently.
+
+---
+
+## 🧠 When to Use:
+- Detecting **cycles** in a linked list or graph
+- Finding the **middle** of a linked list
+- Detecting **starting point of a loop**
+- Finding **duplicate numbers** (without modifying input)
+
+---
+
+## 🔁 How It Works:
+- One pointer moves **one step** at a time (slow)
+- Another pointer moves **two steps** at a time (fast)
+- If a cycle exists, the two pointers will eventually meet
+
+---
+
+## 🧩 Example 1: Detect Cycle in Linked List (Leetcode 141)
+
+```python
+class ListNode:
+    def __init__(self, val=0):
+        self.val = val
+        self.next = None
+
+def has_cycle(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
