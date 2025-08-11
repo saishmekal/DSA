@@ -1,0 +1,43 @@
+# 🎯 Binary Search Pattern – DSA
+
+## 📘 Definition:
+The **Binary Search Pattern** is a divide-and-conquer technique to efficiently find a target value in a **sorted** array or search space by repeatedly halving the search interval.
+
+---
+
+## 🧠 When to Use:
+- The input is **sorted** (array, matrix, search range)
+- Need to find **exact match** or **boundary condition**
+- Problems involving **min/max** with a monotonic condition
+- Search in **rotated sorted arrays** or **2D sorted matrices**
+
+---
+
+## 🔁 How It Works:
+1. Set two pointers: `low = 0` and `high = n-1`
+2. Find the **midpoint** → `mid = (low + high) // 2`
+3. Compare `arr[mid]` with the target:
+   - If equal → found target
+   - If less → search right half (`low = mid + 1`)
+   - If greater → search left half (`high = mid - 1`)
+4. Repeat until found or search space is empty
+
+---
+
+## 🧩 Example 1: Standard Binary Search (Leetcode 704)
+
+```python
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+# Example
+print(binary_search([1, 3, 5, 7, 9], 7))  # Output: 3
