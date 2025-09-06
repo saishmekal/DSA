@@ -1,0 +1,50 @@
+class Solution:
+    def areRotations(self, s1, s2):
+        # Step 1: If lengths differ, cannot be rotations
+        if len(s1) != len(s2):
+            return False
+
+        def computeLPSArray(pat):
+            n = len(pat)
+            lps = [0] * n
+            length = 0  # length of the previous longest prefix suffix
+            i = 1
+
+            while i < n:
+                if pat[i] == pat[length]:
+                    length += 1
+                    lps[i] = length
+                    i += 1
+                else:
+                    if length != 0:
+                        length = lps[length - 1]
+                    else:
+                        lps[i] = 0
+                        i += 1
+            return lps
+
+        # Step 2: Concatenate s1 with itself
+        txt = s1 + s1
+        pat = s2
+        n = len(txt)
+        m = len(pat)
+
+        # Step 3: KMP Search
+        lps = computeLPSArray(pat)
+        i = j = 0
+        while i < n:
+            if pat[j] == txt[i]:
+                j += 1
+                i += 1
+
+            if j == m:
+                return True  # Found match
+
+            elif i < n and pat[j] != txt[i]:
+                if j != 0:
+                    j = lps[j - 1]
+                else:
+                    i += 1
+        return False
+
+
