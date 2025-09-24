@@ -1,0 +1,33 @@
+
+class Solution:
+    
+    def binarySearch(self, mat, target):
+    
+        n = len(mat)
+        low, high = 0, n - 1
+
+    
+        while low <= high:
+            mid = (low + high) // 2  
+
+            if mat[mid] == target:
+                return True  
+            elif target > mat[mid]:
+                low = mid + 1  
+            else:
+                high = mid - 1  
+
+        return False  
+
+    def matSearch(self, mat, x):
+
+        n = len(mat)
+        m = len(mat[0])
+
+   
+        for i in range(n):
+            if self.binarySearch(mat[i], x):
+                return True  
+
+        return False 
+    
