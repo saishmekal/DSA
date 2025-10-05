@@ -1,0 +1,31 @@
+class Solution:
+    MAX_CHAR = 26
+
+    def getHash(self, s):
+        hashList = []
+        freq = [0] * Solution.MAX_CHAR
+
+        for ch in s:
+            freq[ord(ch) - ord('a')] += 1
+
+        for i in range(Solution.MAX_CHAR):
+            hashList.append(str(freq[i]))
+            hashList.append("$")
+
+        return ''.join(hashList)
+
+    def anagrams(self, arr):
+        res = []
+        mp = {}
+
+        for i in range(len(arr)):
+            key = self.getHash(arr[i])
+
+            if key not in mp:
+                mp[key] = len(res)
+                res.append([])
+
+            res[mp[key]].append(arr[i])
+
+        return res
+
