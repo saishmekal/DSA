@@ -1,0 +1,17 @@
+def maxLen(arr):
+    res = 0
+
+    # Pick a starting point as 's'
+    for s in range(len(arr)):
+        sum = 0
+
+        # Consider all subarrays arr[s...e]
+        for e in range(s, len(arr)):
+            sum += -1 if arr[e] == 0 else 1
+
+            # Check if it's a 0-sum subarray
+            if sum == 0:
+                # Update max size
+                res = max(res, e - s + 1)
+
+    return res
